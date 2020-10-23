@@ -62,13 +62,14 @@ class Server {
       var id;
       
       var my_carrier = carrier.carry(socket);
-      setInterval(()=>{
+      const interval = setInterval(()=>{
         socket.write(
           JSON.stringify({ event: "ping" })+"\r\n"
         );
       },10000)
 
         socket.on("close", () => {
+          clearInterval(interval);
           console.log('closed', id);
           if (this.slaves[id]) {
             this.slaves[id] = null;
@@ -126,8 +127,10 @@ class Slave {
     this.id = uuidv4();
     this.name = conf.name;
     const self = this;
+    this.connected = 0;
     setInterval(()=>{
-      if(!self.connected) {
+      console.log('interval', new Date().getTime() - self.connected);
+      if(new Date().getTime() - self.connected > 21000) {
         self.swarm.join(topic, {
           lookup: true, // find & connect to peers
           announce: true // optional- announce self as a connection target
