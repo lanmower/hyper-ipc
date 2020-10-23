@@ -1,5 +1,5 @@
-const { RPCServer } = require("../src");
-const { RPCSlave } = require("../src");
+const { RPCServer } = require("hyperrpc");
+const { RPCSlave } = require("hyperrpc");
 
 var rpc = RPCServer("test");
 
