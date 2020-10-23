@@ -17,12 +17,12 @@
     "js",
     "socket.io"
   ],
-  "author": "polariszz",
+  "author": "lanmower",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/polariszz/socket-rpc/issues"
+    "url": "https://github.com/lanmower/hyperrpc/issues"
   },
-  "homepage": "https://github.com/polariszz/socket-rpc#readme",
+  "homepage": "https://github.com/lanmower/hyperrpc",
   "dependencies": {
     "socket.io": "^1.7.2",
     "socket.io-client": "^1.7.2",
