@@ -1,4 +1,4 @@
-A simple server-slave rpc framework powered by socket.io.
+A simple server-slave rpc framework powered by hyperswarm
 
 ### Installation
 
