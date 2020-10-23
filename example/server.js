@@ -1,23 +1,24 @@
-const RPCServer = require("hyperrpc").server;
-//const RPCSlave = require("hyperrpc").slave;
-var rpc = RPCServer("blabla");
+const RPCServer = require("../").server;
+const RPCSlave = require("../").slave;
+ 
 
-/*var worker = RPCSlave({
-  topic: "test",
+var worker = RPCSlave({
+  topic: "bla",
   name: "example"
-});*/
+});
 
-//worker.register("welcome", (name) => {return "hello <br>" + name});
+var rpc = RPCServer("bla");
+
 rpc.ready = id => {
-  console.log('ready')
+  console.log('ready');
 };
+worker.register("welcome", (name) => {return "hello <br>" + name});
 
 const welcome = async (req, res) => {
-  console.log('runnin rpc');
   const result = await rpc.run(rpc.get("example"), "welcome", new Date().toString());
   res.send(result);
 };
-
+ 
 const express = require("express");
 const app = express();
 app.get("/welcome", welcome);
@@ -25,3 +26,4 @@ app.get("/welcome", welcome);
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
+ 

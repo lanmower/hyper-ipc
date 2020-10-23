@@ -1,28 +1,19 @@
-{
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
-  "name": "hello-express",
-  "version": "0.0.1",
-  "description": "A simple Node app built on Express, instantly up and running.",
-  "main": "server.js",
+{ 
+  "name": "hyperrpc",
+  "version": "1.0.15",
+  "description": "Hyperswarm RPC Library",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js"
-  },  
-  "dependencies": {
-    "express": "^4.17.1",
-    "hyperrpc": "^1.0.11"
+    "start": "node example/server.js"
   },
-  "engines": {
-    "node": "12.x"
+  "author": "lanmower",
+  "license": "MIT",
+  "dependencies": {
+    "hyperswarm": "^2.15.2",
+    "carrier": "^0.3.0"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/hello-express"
-  },
-  "license": "MIT",
-  "keywords": [
-    "node",
-    "glitch",
-    "express"
-  ]
+    "type": "git",
+    "url": "https://github.com/hyperswarm/replicator.git"
+  }
 }
