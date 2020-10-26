@@ -1,6 +1,6 @@
 { 
   "name": "hyperrpc",
-  "version": "1.0.16",
+  "version": "1.0.19",
   "description": "Hyperswarm RPC Library",
   "main": "index.js",
   "scripts": {
