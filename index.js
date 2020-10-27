@@ -1,5 +1,7 @@
 const hyperswarm = require("hyperswarm");
 const crypto = require("crypto");
+const carrier = require("carrier");
+
 const getId = topic => {
   return crypto
     .createHash("sha256")
@@ -13,25 +15,29 @@ function server(conftopic, name) {
   const topic = getId(conftopic);
   const nodes = {};
   const funcmap = {};
+  let done;
+  
   swarm.on("connection", (socket, info) => {
     const send = {
       id: localId.toString(),
       event: "register",
       name
     };
-    socket.write(JSON.stringify(send));
-    socket.on("data", async json => {
+    var read_carrier = carrier.carry(socket);
+    socket.write(JSON.stringify(send)+"\r\n");
+    read_carrier.on("line", async json => {
       try {
         const data = JSON.parse(json);
         const { id } = data;
         if (data.event == "resolve") {
-          console.log("resolve", nodes[id].awaits[data.callId].call(data.result));
+          nodes[id].awaits[data.callId].call(data.result); 
         }
         if (data.event == "register") {
           if (info.deduplicate(localId, Buffer.from(id, "utf8"))) {
             return;
           }
           nodes[id] = { ...data, awaits: {}, socket };
+          if(done) done(id, socket);
         }
         if (data.event == "run") {
           const { callId, payload, funcname } = data;
@@ -42,7 +48,7 @@ function server(conftopic, name) {
             callId,
             result
           };
-          socket.write(JSON.stringify(send));
+          socket.write(JSON.stringify(send)+"\r\n");
         }
       } catch (e) {
         console.error(e);
@@ -52,6 +58,7 @@ function server(conftopic, name) {
   swarm.join(topic, { lookup: true, announce: true });
 
   return {
+    ready: (input)=>{done = input},
     register: (funcname, func) => {
       funcmap[funcname] = func;
     },
@@ -71,7 +78,7 @@ function server(conftopic, name) {
         callId,
         payload
       };
-      node.socket.write(JSON.stringify(send));
+      node.socket.write(JSON.stringify(send)+"\r\n");
       let res = null;
       return new Promise(resolve => {
         let done = false;

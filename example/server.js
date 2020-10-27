@@ -1,23 +1,22 @@
 const RPC = require("../");
- 
+//const RPC = require("hyperrpc");
 
-var rpc = new RPC("bla", "server");
+//register worker, make function available
 var worker = new RPC("bla","worker");
-
-rpc.ready = id => {
-  console.log('ready');
-};
 worker.register("welcome", (name) => {return "hello <br>" + name});
 
-const welcome = async (req, res) => {
+//register server, request some work
+var rpc = new RPC("bla", "server");
+rpc.ready(async id => {
   const result = await rpc.run(rpc.get("worker"), "welcome", new Date().toString());
-  res.send(result);
-};
- 
+  console.log(result);
+});
+
+
+
+//this part is just for glitch to stop loading
 const express = require("express");
 const app = express();
-app.get("/", welcome);
-
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
