@@ -12,12 +12,4 @@ rpc.ready(async id => {
   console.log(result);
 });
 
-
-
-//this part is just for glitch to stop loading
-const express = require("express");
-const app = express();
-const listener = app.listen(process.env.PORT, () => {
-  console.log("Your app is listening on port " + listener.address().port);
-});
- 
+  
