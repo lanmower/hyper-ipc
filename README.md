@@ -1,32 +1,31 @@
 ### Installation
 
 ```
-npm install --save hyperrpc
+npm install --save hyper-ipc
 ```
 You can split your program into different parts, and use this library to
 get one part to ask another to run code, and receive the response, 
 allowing you to expose your functions remotely.
 
 The different instances will automatically find each other and connect using
-a peer-to-peer swarm library called hyperswarm.
+a peer-to-peer library called hyperswarm.
 
-You specify a topic (this generates an cryptographic key) for all your instances
-to listen in on as well as a name for your instance, and they will advertise on
-the specified "topic" key, the library stores a registry of other instances on the
-same topic and allow you to access them by name.
+You can hand the constructor a secret key when you create it to make endpoints
+harder to guess.
 
+require('./ipc.js')('key');
 ```
-var RPC = require('hyperrpc');
+const node = require('./ipc.js')();
+const node2 = require('./ipc.js')();
 
-//RPC SERVER
-var rpc = new RPC("bla", "server"); //topic and name
-rpc.ready(async id => {
-  const result = await rpc.run(rpc.get("worker"), "welcome", new Date().toString());
-  console.log(result);
+node.serve('helloworld', async (query, callback) => {
+  console.log('hello world');
+  callback(null, 'done');
 });
 
-//RPC WORKER
-var worker = new RPC("bla","worker"); //topic and name
-worker.register("welcome", (name) => {return "hello <br>" + name});
-
+async function run() { 
+  node2.run('helloworld', console.log)
+}
 ```
+
+Communication is noise encrypted.
