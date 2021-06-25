@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "hyperswarm": "^2.15.2",
-    "carrier": "^0.3.0"
+    "@hyperswarm/dht": "@hyperswarm/dht"
   },
   "repository": {
     "type": "git",
