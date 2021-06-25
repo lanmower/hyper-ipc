@@ -9,7 +9,7 @@
   "author": "lanmower",
   "license": "MIT",
   "dependencies": {
-    "@hyperswarm/dht": "@hyperswarm/dht"
+    "@hyperswarm/dht": "5.0.0-rc.2"
   },
   "repository": {
     "type": "git",
