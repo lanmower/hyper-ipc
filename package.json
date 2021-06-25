@@ -1,7 +1,7 @@
 { 
-  "name": "hyperrpc",
+  "name": "hyper-ipc",
   "version": "1.0.23",
-  "description": "Hyperswarm RPC Library",
+  "description": "Hyperswarm IPC Library",
   "main": "index.js",
   "scripts": {
     "start": "node example/server.js"
