@@ -15,8 +15,8 @@ harder to guess.
 
 require('./ipc.js')('key');
 ```
-const node = require('./ipc.js')();
-const node2 = require('./ipc.js')();
+const node = require('hyper-ipc')();
+const node2 = require('hyper-ipc')();
 
 node.serve('helloworld', async (query, callback) => {
   console.log('hello world');
