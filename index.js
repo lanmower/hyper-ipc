@@ -13,6 +13,7 @@ module.exports = (key='')=>{
             if(err) throw err;
             socket.write(output);
             socket.end();
+            socket.on('error', function(e){throw e});
           });
         });
       });
@@ -25,14 +26,9 @@ module.exports = (key='')=>{
       socket.on("data", (res)=>{
         cb(null, res);
         socket.end();
+        socket.on('error', function(e){throw e});
       });
       socket.write(args);
     }
   }
 }
-
-
-process.on('uncaughtException', (err) => {
-  console.error('There was an uncaught error', err)
-  //process.exit(1) //mandatory (as per the Node docs)
-})
