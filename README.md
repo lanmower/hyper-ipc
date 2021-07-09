@@ -15,8 +15,8 @@ harder to guess.
 
 require('./ipc.js')('key');
 ```
-const node = require('hyper-ipc')();
-const node2 = require('hyper-ipc')();
+const node = require('hyper-ipc')('secrettopic');
+const node2 = require('hyper-ipc')('secrettopic');
 
 node.serve('helloworld', async (query, callback) => {
   console.log('hello world');
@@ -24,7 +24,7 @@ node.serve('helloworld', async (query, callback) => {
 });
 
 async function run() { 
-  node2.run('helloworld', console.log)
+  node2.run('helloworld', 'arguments', console.log)
 }
 ```
 

@@ -1,18 +1,1 @@
-{ 
-  "name": "hyper-ipc",
-  "version": "1.0.23",
-  "description": "Hyperswarm IPC Library",
-  "main": "index.js",
-  "scripts": {
-    "start": "node example/server.js"
-  },
-  "author": "lanmower",
-  "license": "MIT",
-  "dependencies": {
-    "@hyperswarm/dht": "5.0.0-rc.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lanmower/hyper-ipc.git"
-  }
-}
+{"name":"hyper-ipc","version":"1.0.25","description":"Hyperswarm IPC Library","main":"index.js","scripts":{"start":"node example/server.js"},"author":"lanmower","license":"MIT","dependencies":{"@hyperswarm/dht":"^5.0.0-rc.3"},"repository":{"type":"git","url":"https://github.com/lanmower/hyper-ipc.git"}}
