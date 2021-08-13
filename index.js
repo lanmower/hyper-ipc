@@ -5,8 +5,7 @@ const node = new DHT({});
 
 const runKey = (key, args, cb)=>{
    return new Promise(resolve=>{
-      node.connect(key);
-      const socket = node.connect(keyPair.publicKey); 
+      const socket = node.connect(key);
       socket.on("data", (res)=>{
         cb(null, res);
         socket.end();
