@@ -1,6 +1,5 @@
 dependencies:
   '@hyperswarm/dht': 5.0.0-rc.6
-  hypercore-crypto: 2.3.0
   msgpackr: 1.4.4
 packages:
   /@hyperswarm/dht/5.0.0-rc.6:
@@ -51,7 +50,7 @@ packages:
       fast-fifo: 1.0.0
       kademlia-routing-table: 1.0.0
       sodium-universal: 3.0.4
-      streamx: 2.11.2
+      streamx: 2.11.3
       time-ordered-set: 1.0.2
     dev: false
     resolution:
@@ -80,13 +79,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-JbGNtM1YRd8EQH/2vNTAP1oy5lJVPlBFYZfCJTu3k8sqOUm0rRIf/3+MCd5noVykETwTbun6jEOc+4Tu78ubHA==
-  /hypercore-crypto/2.3.0:
-    dependencies:
-      sodium-universal: 3.0.4
-      uint64be: 3.0.0
-    dev: false
-    resolution:
-      integrity: sha512-HdI0VKwPHVIsbkJ2kFot5XRJoQOO1rGg0G2X+Z/mrP8vfZPFD5H1wwJ5nBDp0QYsZfHjOq0nOuUoW/NgdOZofA==
   /inherits/2.0.4:
     dev: false
     resolution:
@@ -156,7 +148,7 @@ packages:
       noise-protocol: 3.0.1
       sodium-secretstream: 1.0.1
       sodium-universal: 3.0.4
-      streamx: 2.11.2
+      streamx: 2.11.3
     dev: false
     resolution:
       integrity: sha512-dP2Z7BgVj4LPEnDPYI6iXAEdUbQrB3bLc2LjQdmXJIBNjoiYVH5d/DawXQI4ZLmRgeqRMt7EDzT+Ffn8ouG3vw==
@@ -264,13 +256,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-WnBQ0GDo/82shKQHZBZT9h4q4miCtxkbzcwVLsCBPWNq4qbq8BXhKICt9nPwQAsJ43ct/rF61FKu4t0druUBug==
-  /streamx/2.11.2:
+  /streamx/2.11.3:
     dependencies:
       fast-fifo: 1.0.0
       queue-tick: 1.0.0
     dev: false
     resolution:
-      integrity: sha512-CoIBTrCoMKzhTMXZlMwlkjxCH+8e5H5C7WeuWKSlY5ldtCUMkkrLh5UT2+2OHAnpTPrjTimKQl/aXxgbhZtH5Q==
+      integrity: sha512-NhcjG/xi33S4O2LRXZnBg7TLhnlE7RKWTeUx3N08K/89PKZ6MehEtSE+aToT5f2Cer2ArX9FwUhVfZbsUjnvrw==
   /string_decoder/1.3.0:
     dependencies:
       safe-buffer: 5.2.1
@@ -285,10 +277,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Mz0CX4vBGM5lj8ttbIFt7o4ZMxk/9rgudJRh76EvB7xXZMur7T/cjRiH2w4Fmkq0zxf2QpM8IFvOSRn8FEu3gA==
-  /uint64be/3.0.0:
-    dev: false
-    resolution:
-      integrity: sha512-mliiCSrsE29aNBI7O9W5gGv6WmA9kBR8PtTt6Apaxns076IRdYrrtFhXHEWMj5CSum3U7cv7/pi4xmi4XsIOqg==
   /unordered-set/2.0.1:
     dev: false
     resolution:
@@ -324,5 +312,4 @@ shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   '@hyperswarm/dht': next
-  hypercore-crypto: ^2.3.0
   msgpackr: ^1.4.4
