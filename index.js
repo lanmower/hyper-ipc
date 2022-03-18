@@ -55,7 +55,7 @@ module.exports = (key = '') => {
   }
 }
 
-/*process.stdin.resume();//so the program will not close instantly
+process.stdin.resume();//so the program will not close instantly
 
 async function exitHandler(options, exitCode) {
   if (options.cleanup) console.log('DHT Cleanup');
@@ -80,4 +80,3 @@ process.on('SIGUSR2', exitHandler.bind(null, { exit: true }));
 
 //catches uncaught exceptions
 process.on('uncaughtException', exitHandler.bind(null, { exit: true }));
-*/
