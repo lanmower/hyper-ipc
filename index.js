@@ -54,15 +54,3 @@ module.exports = (key = '') => {
     runKey
   }
 }
-
-async function exitHandler(options, exitCode) {
-  if (options.cleanup) console.log('DHT Cleanup');
-  if (exitCode || exitCode === 0) console.log(exitCode);
-  try {
-    await node.destroy([options])
-  } catch (e) {
-
-  }
-  if (options.exit) process.exit(1);
-}
-
