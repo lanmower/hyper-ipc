@@ -1,6 +1,6 @@
 {
     "name": "hyper-ipc",
-    "version": "1.2.6",
+    "version": "1.2.8",
     "description": "Hyperswarm IPC Library",
     "main": "index.js",
     "scripts": {
