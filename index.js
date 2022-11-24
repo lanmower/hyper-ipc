@@ -2,10 +2,10 @@ const DHT = require("@hyperswarm/dht");
 const crypto = require('hypercore-crypto')
 const { unpack, pack } = require('msgpackr');
 const node = new DHT();
-
+const Keychain = require('keypear')
 const runKey = async (key, args) => {
   return new Promise((pass, fail) => {
-    console.log('calling', key.toString('hex'));
+    console.log('calling', key.toString('hex'), args);
     const socket = node.connect(key);
     socket.on('open', function () {
       console.log('socket opened')
@@ -24,10 +24,12 @@ const runKey = async (key, args) => {
   })
 }
 
-module.exports = (key = '') => {
+module.exports = () => {
   return {
-    serve: (command, cb) => {
-      const keyPair = crypto.keyPair(crypto.data(Buffer.from(key + command)));
+    serve: (kp, command, cb) => {
+      console.log({kp});
+      const keys = new Keychain(kp);
+      const keyPair = keys.get(command);
       console.log('serving', command, keyPair.publicKey.toString('hex'));
       const server = node.createServer({});
       server.on("connection", function (socket) {
@@ -46,10 +48,12 @@ module.exports = (key = '') => {
       server.listen(keyPair);
       console.log('running listen...')
     },
-    run: (command, args) => {
+    run: (publicKey, command, args) => {
       console.log('run', command);
-      const keyPair = crypto.keyPair(crypto.data(Buffer.from(key + command)));
-      return runKey(keyPair.publicKey, args)
+      const keys = new Keychain(publicKey) // generate a "readonly" keychain
+      const key = keys.sub(command).publicKey;
+      console.log({keys, key})
+      return runKey(key, args)
     },
     runKey
   }
